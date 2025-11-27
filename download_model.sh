@@ -2,8 +2,10 @@
 
 mkdir -p /models
 
-MODEL_URL="https://huggingface.co/TheBloke/Mistral-7B-Instruct-GGUF/resolve/main/mistral-7b-instruct.Q4_K_M.gguf"
+MODEL_URL="https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/resolve/main/qwen2.5-3b-instruct-q4_0.gguf"
 
-echo "Baixando modelo..."
-curl -L $MODEL_URL -o /models/model.gguf
-echo "Modelo baixado!"
+echo "Baixando modelo Qwen 2.5 3B Instruct..."
+curl -L -H "User-Agent: Mozilla/5.0" "$MODEL_URL" -o /models/model.gguf
+
+echo "Modelo baixado com sucesso!"
+ls -lh /models

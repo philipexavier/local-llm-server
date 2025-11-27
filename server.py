@@ -13,8 +13,16 @@ model = Llama(
 def generate():
     data = request.json
     prompt = data.get("prompt", "")
-    out = model(prompt, max_tokens=200)
-    return jsonify({"text": out["choices"][0]["text"]})
+
+    out = model.create_chat_completion(
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=200,
+        temperature=0.7
+    )
+
+    return jsonify({"text": out["choices"][0]["message"]["content"]})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)

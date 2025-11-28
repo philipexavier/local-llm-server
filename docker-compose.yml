@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  qwen-llm:
+    build: .
+    container_name: qwen-llm
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - /opt/easypanel/models/llm:/opt/easypanel/models/llm
+    environment:
+      - PYTHONUNBUFFERED=1
